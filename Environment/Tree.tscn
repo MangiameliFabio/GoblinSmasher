@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://brp0eutk4jkca"]
+
+[ext_resource type="Texture2D" uid="uid://dc0ojtmjvmdwd" path="res://Tiny Swords/Resources/Trees/Tree.png" id="1_ubsu0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7up2"]
+atlas = ExtResource("1_ubsu0")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82rde"]
+atlas = ExtResource("1_ubsu0")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5kl6"]
+atlas = ExtResource("1_ubsu0")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tvpr"]
+atlas = ExtResource("1_ubsu0")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rpk7k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7up2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82rde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5kl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tvpr")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_ubsu0"]
+script/source = "extends AnimatedSprite2D
+
+func _ready() -> void:
+	play(\"Idle\")
+	frame = randi_range(0, 6)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubsu0"]
+size = Vector2(108, 55)
+
+[node name="Tree" type="Node2D"]
+y_sort_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -78)
+sprite_frames = SubResource("SpriteFrames_rpk7k")
+animation = &"Idle"
+frame_progress = 0.519339
+script = SubResource("GDScript_ubsu0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -79)
+collision_layer = 517
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 49.5)
+shape = SubResource("RectangleShape2D_ubsu0")

@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://b5lguviq2hymc"]
+
+[ext_resource type="FontFile" uid="uid://6rojyuymj8ce" path="res://Font/_bitmap_font____romulus_by_pix3m_d6aokem.ttf" id="1_ocvca"]
+[ext_resource type="Texture2D" uid="uid://clk4v8gbe5bbc" path="res://Tiny Swords/Factions/Goblins/Troops/Torch/Purple/Torch_Purple.png" id="1_y74tg"]
+
+[sub_resource type="GDScript" id="GDScript_y74tg"]
+script/source = "extends Node2D
+
+@export var Text : String = \"Hello\"
+
+func _ready() -> void:
+	$Label.text = Text
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocvca"]
+atlas = ExtResource("1_y74tg")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqyfe"]
+atlas = ExtResource("1_y74tg")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft2if"]
+atlas = ExtResource("1_y74tg")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_perss"]
+atlas = ExtResource("1_y74tg")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghlu7"]
+atlas = ExtResource("1_y74tg")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0exrd"]
+atlas = ExtResource("1_y74tg")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tedrw"]
+atlas = ExtResource("1_y74tg")
+region = Rect2(1152, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2c2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocvca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqyfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft2if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_perss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghlu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0exrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tedrw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_ocvca"]
+script/source = "extends Area2D
+
+@export var Text : Label
+
+func _ready() -> void:
+	body_entered.connect(_show_label_text)
+	body_exited.connect(_hide_label_text)
+	
+func _show_label_text(node: Node2D):
+	if node.get_parent() is PlayerKnight:
+		Text.visible = true
+
+func _hide_label_text(node: Node2D):
+	if node.get_parent() is PlayerKnight:
+		Text.visible = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y74tg"]
+radius = 239.052
+
+[node name="InteractionGoblin" type="Node2D"]
+script = SubResource("GDScript_y74tg")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -82.0
+offset_right = 33.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_ocvca")
+theme_override_font_sizes/font_size = 32
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t2c2c")
+autoplay = "default"
+frame_progress = 0.878022
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("Text")]
+script = SubResource("GDScript_ocvca")
+Text = NodePath("../Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_y74tg")

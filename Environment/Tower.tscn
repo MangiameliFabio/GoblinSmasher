@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://crscx3amqy4da"]
+
+[ext_resource type="Texture2D" uid="uid://xmeptojxvweg" path="res://Tiny Swords/Factions/Goblins/Buildings/Wood_Tower/Wood_Tower_Purple.png" id="1_tqt04"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk571"]
+atlas = ExtResource("1_tqt04")
+region = Rect2(0, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1t0o"]
+atlas = ExtResource("1_tqt04")
+region = Rect2(256, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k53w"]
+atlas = ExtResource("1_tqt04")
+region = Rect2(512, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50t2k"]
+atlas = ExtResource("1_tqt04")
+region = Rect2(768, 0, 256, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tqt04"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk571")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1t0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k53w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50t2k")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_ubsu0"]
+script/source = "extends AnimatedSprite2D
+
+func _ready() -> void:
+	play(\"Idle\")
+	frame = randi_range(0, 6)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk571"]
+size = Vector2(108, 104)
+
+[node name="Tower" type="Node2D"]
+y_sort_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -78)
+sprite_frames = SubResource("SpriteFrames_tqt04")
+animation = &"Idle"
+script = SubResource("GDScript_ubsu0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -79)
+collision_layer = 517
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 25)
+shape = SubResource("RectangleShape2D_sk571")

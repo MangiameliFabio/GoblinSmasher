@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2hhn7o5heyy3"
+path="res://.godot/imported/Fire, Burning, Burning Wood, Bonfire, Medium Intensity, Crispy, Loop SND122311.wav-b8187af7379518c8a43b26f98f51aa5a.sample"
+
+[deps]
+
+source_file="res://Environment/Fire, Burning, Burning Wood, Bonfire, Medium Intensity, Crispy, Loop SND122311.wav"
+dest_files=["res://.godot/imported/Fire, Burning, Burning Wood, Bonfire, Medium Intensity, Crispy, Loop SND122311.wav-b8187af7379518c8a43b26f98f51aa5a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

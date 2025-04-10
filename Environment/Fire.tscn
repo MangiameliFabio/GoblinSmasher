@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://cm0b18vai4r3j"]
+
+[ext_resource type="Texture2D" uid="uid://dnnrjskqke6l" path="res://Tiny Swords/Effects/Fire/Fire.png" id="1_7btgf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8yp1"]
+atlas = ExtResource("1_7btgf")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaexo"]
+atlas = ExtResource("1_7btgf")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14txp"]
+atlas = ExtResource("1_7btgf")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq0po"]
+atlas = ExtResource("1_7btgf")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otuiy"]
+atlas = ExtResource("1_7btgf")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qxig"]
+atlas = ExtResource("1_7btgf")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biuu8"]
+atlas = ExtResource("1_7btgf")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dak4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8yp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaexo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14txp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq0po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otuiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qxig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biuu8")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8yp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaexo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14txp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq0po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otuiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qxig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biuu8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_7btgf"]
+script/source = "extends AnimatedSprite2D
+
+func _ready() -> void:
+	play(\"Fire\")
+"
+
+[node name="Fire" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dak4c")
+animation = &"Fire"
+script = SubResource("GDScript_7btgf")
