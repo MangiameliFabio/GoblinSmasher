@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ki6go4rk7u7"]
+
+[ext_resource type="FontFile" uid="uid://6rojyuymj8ce" path="res://Font/_bitmap_font____romulus_by_pix3m_d6aokem.ttf" id="5_jy0wl"]
+
+[sub_resource type="GDScript" id="GDScript_glv7d"]
+script/source = "extends Control
+
+var enable_restart = false
+
+func _ready() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property($Label, \"theme_override_colors/font_color\", Color.WHITE, 3).set_trans(Tween.TRANS_EXPO)
+	
+	get_tree().create_timer(1).timeout.connect(func(): enable_restart = true)
+
+func _input(event: InputEvent) -> void:
+	if enable_restart and not event.is_released() and not event.is_echo():
+		TransitionScene.change_scene(\"res://Level/TutorialLevel.tscn\")
+"
+
+[node name="EndScreen" type="Control"]
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource("GDScript_glv7d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_fonts/font = ExtResource("5_jy0wl")
+theme_override_font_sizes/font_size = 32
+text = "RESTART?"
+horizontal_alignment = 1
+vertical_alignment = 1

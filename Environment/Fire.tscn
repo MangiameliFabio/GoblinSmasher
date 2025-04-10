@@ -90,6 +90,7 @@ script/source = "extends AnimatedSprite2D
 
 func _ready() -> void:
 	play(\"Fire\")
+	frame = randi_range(0, 6)
 "
 
 [node name="Fire" type="Node2D"]

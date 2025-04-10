@@ -83,25 +83,25 @@ func attack(combo: int):
 	
 	if attack_dir.y > 0:
 		character.Sprite.play("%dAttackDown" % combo)
-		character.Body.velocity = Vector2.DOWN * 5000
+		character.Body.velocity = Vector2.DOWN * 2500
 	elif attack_dir.y < 0:
 		character.Sprite.play("%dAttackUp" % combo)
-		character.Body.velocity = Vector2.UP * 5000
+		character.Body.velocity = Vector2.UP * 2500
 	elif attack_dir.x < 0:
 		character.Sprite.flip_h = true
 		character.Sprite.play("%dAttackLeftRight" % combo)
-		character.Body.velocity = Vector2.LEFT * 5000
+		character.Body.velocity = Vector2.LEFT * 2500
 	elif attack_dir.x > 0:
 		character.Sprite.flip_h = false
 		character.Sprite.play("%dAttackLeftRight" % combo)
-		character.Body.velocity = Vector2.RIGHT * 5000
+		character.Body.velocity = Vector2.RIGHT * 2500
 	else:
 		if character.Sprite.flip_h:
 			character.Sprite.play("%dAttackLeftRight" % combo)
-			character.Body.velocity = Vector2.LEFT * 5000
+			character.Body.velocity = Vector2.LEFT * 2500
 		else:
 			character.Sprite.play("%dAttackLeftRight" % combo)
-			character.Body.velocity = Vector2.RIGHT * 5000
+			character.Body.velocity = Vector2.RIGHT * 2500
 	
 	character.SFX.stream = SwordSounds[combo]
 	character.SFX.play(0)

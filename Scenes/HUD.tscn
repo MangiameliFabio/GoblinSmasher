@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://du1ew5jkoaiqg"]
+
+[ext_resource type="Texture2D" uid="uid://ck0nfo5llkmpf" path="res://Font/Circle.png" id="1_sd512"]
+[ext_resource type="FontFile" uid="uid://6rojyuymj8ce" path="res://Font/_bitmap_font____romulus_by_pix3m_d6aokem.ttf" id="2_jo1ms"]
+[ext_resource type="Texture2D" uid="uid://wgdu1ypbjsp6" path="res://Font/Circle_Pressed.png" id="3_psnte"]
+
+[sub_resource type="GDScript" id="GDScript_psnte"]
+script/source = "extends CanvasLayer
+
+## Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$TouchScreenButton5.pressed.connect(func(): $HiddenTouch.visible = true)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psnte"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sd512"]
+radius = 100.0
+
+[node name="Hud" type="CanvasLayer"]
+script = SubResource("GDScript_psnte")
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="."]
+modulate = Color(0.462745, 0.462745, 0.462745, 0.737255)
+position = Vector2(573, 320)
+shape = SubResource("RectangleShape2D_psnte")
+
+[node name="HiddenTouch" type="Node2D" parent="."]
+visible = false
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HiddenTouch"]
+modulate = Color(0.462745, 0.462745, 0.462745, 0.737255)
+position = Vector2(128, 376)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("1_sd512")
+texture_pressed = ExtResource("3_psnte")
+shape = SubResource("CircleShape2D_sd512")
+passby_press = true
+action = "Up"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="HiddenTouch"]
+modulate = Color(0.462745, 0.462745, 0.462745, 0.737255)
+position = Vector2(128, 526)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("1_sd512")
+texture_pressed = ExtResource("3_psnte")
+shape = SubResource("CircleShape2D_sd512")
+passby_press = true
+action = "Down"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="HiddenTouch"]
+modulate = Color(0.462745, 0.462745, 0.462745, 0.737255)
+position = Vector2(203, 451)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("1_sd512")
+texture_pressed = ExtResource("3_psnte")
+shape = SubResource("CircleShape2D_sd512")
+passby_press = true
+action = "Right"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="HiddenTouch"]
+modulate = Color(0.462745, 0.462745, 0.462745, 0.737255)
+position = Vector2(53, 451)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("1_sd512")
+texture_pressed = ExtResource("3_psnte")
+shape = SubResource("CircleShape2D_sd512")
+passby_press = true
+action = "Left"
+
+[node name="ButtonS" type="TouchScreenButton" parent="HiddenTouch"]
+modulate = Color(0.462291, 0.462291, 0.462291, 1)
+position = Vector2(910, 494)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("1_sd512")
+texture_pressed = ExtResource("3_psnte")
+shape = SubResource("CircleShape2D_sd512")
+passby_press = true
+action = "Dash"
+
+[node name="ButtonK" type="TouchScreenButton" parent="HiddenTouch"]
+modulate = Color(0.462291, 0.462291, 0.462291, 1)
+position = Vector2(990, 416)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("1_sd512")
+texture_pressed = ExtResource("3_psnte")
+shape = SubResource("CircleShape2D_sd512")
+passby_press = true
+action = "Attack"
+
+[node name="Label2" type="Label" parent="HiddenTouch"]
+z_index = 1
+offset_left = 1016.0
+offset_top = 431.0
+offset_right = 1072.0
+offset_bottom = 517.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_jo1ms")
+theme_override_font_sizes/font_size = 50
+text = "K"
+
+[node name="Label" type="Label" parent="HiddenTouch"]
+z_index = 10
+offset_left = 937.0
+offset_top = 507.0
+offset_right = 981.0
+offset_bottom = 593.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_jo1ms")
+theme_override_font_sizes/font_size = 60
+text = "S"

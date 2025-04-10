@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b5lguviq2hymc"]
 
 [ext_resource type="FontFile" uid="uid://6rojyuymj8ce" path="res://Font/_bitmap_font____romulus_by_pix3m_d6aokem.ttf" id="1_ocvca"]
-[ext_resource type="Texture2D" uid="uid://clk4v8gbe5bbc" path="res://Tiny Swords/Factions/Goblins/Troops/Torch/Purple/Torch_Purple.png" id="1_y74tg"]
+[ext_resource type="Texture2D" uid="uid://dgb1i3js8ng7l" path="res://Tiny Swords/Factions/Goblins/Troops/Torch/Purple/Torch_Purple_Friendly.png" id="2_ocvca"]
 
 [sub_resource type="GDScript" id="GDScript_y74tg"]
 script/source = "extends Node2D
@@ -12,40 +12,33 @@ func _ready() -> void:
 	$Label.text = Text
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ocvca"]
-atlas = ExtResource("1_y74tg")
-region = Rect2(0, 192, 192, 192)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqyfe"]
-atlas = ExtResource("1_y74tg")
-region = Rect2(192, 192, 192, 192)
+atlas = ExtResource("2_ocvca")
+region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ft2if"]
-atlas = ExtResource("1_y74tg")
-region = Rect2(384, 192, 192, 192)
+atlas = ExtResource("2_ocvca")
+region = Rect2(192, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_perss"]
-atlas = ExtResource("1_y74tg")
-region = Rect2(576, 192, 192, 192)
+atlas = ExtResource("2_ocvca")
+region = Rect2(384, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghlu7"]
-atlas = ExtResource("1_y74tg")
-region = Rect2(768, 192, 192, 192)
+atlas = ExtResource("2_ocvca")
+region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0exrd"]
-atlas = ExtResource("1_y74tg")
-region = Rect2(960, 192, 192, 192)
+atlas = ExtResource("2_ocvca")
+region = Rect2(768, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tedrw"]
-atlas = ExtResource("1_y74tg")
-region = Rect2(1152, 192, 192, 192)
+atlas = ExtResource("2_ocvca")
+region = Rect2(960, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2c2c"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ocvca")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gqyfe")
 }, {
@@ -68,6 +61,22 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
+
+[sub_resource type="GDScript" id="GDScript_gqyfe"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	frame = randi_range(0, 3)
+	speed_scale = randf_range(0.8, 1.2)
+	
+	var r = randi_range(0,1)
+	if r:
+		play()
+	else:
+		play_backwards()
+"
 
 [sub_resource type="GDScript" id="GDScript_ocvca"]
 script/source = "extends Area2D
@@ -118,6 +127,7 @@ vertical_alignment = 1
 sprite_frames = SubResource("SpriteFrames_t2c2c")
 autoplay = "default"
 frame_progress = 0.878022
+script = SubResource("GDScript_gqyfe")
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("Text")]
 script = SubResource("GDScript_ocvca")

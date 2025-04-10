@@ -20,7 +20,10 @@ func physics_update(_delta: float) -> void:
 
 
 func enter(_msg := {}) -> void:
-	character.Sprite.play("Idle")
+	if not character.Aggresive:
+		character.Sprite.play("Friendly")
+	else:
+		character.Sprite.play("Idle")
 	
 	if _msg.has("WaitTime"):
 		_wait_time = _msg["WaitTime"]
